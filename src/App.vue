@@ -3,6 +3,7 @@
 </template>
 <script>
 import TheResources from "./components/TheResources.vue";
+
 export default {
   components: { TheResources },
   data() {
