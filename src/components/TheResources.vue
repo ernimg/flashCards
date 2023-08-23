@@ -41,6 +41,7 @@ export default {
       categories: this.categories,
       setActiveTab: this.setActiveTab,
       selectedCategory: this.activeFlasCard,
+      addC: this.addFlasCard,
     };
   },
 
@@ -58,6 +59,9 @@ export default {
       } else {
         this.activeFlasCard = [];
       }
+    },
+    addFlasCard(word, translate, category) {
+      console.log(word, translate, category);
     },
   },
 };
