@@ -9,9 +9,9 @@
 <script>
 import AddFlashCard from "./AddFlashCard.vue";
 import FlasCardCategories from "./FlasCardCategories.vue";
-import FlasCardsColletion from "./FlasCardsColletion.vue";
+import FlashCardsColletion from "./FlashCardsColletion.vue";
 export default {
-  components: { FlasCardCategories, AddFlashCard, FlasCardsColletion },
+  components: { FlasCardCategories, AddFlashCard, FlashCardsColletion },
 
   data() {
     return {
