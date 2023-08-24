@@ -74,7 +74,6 @@ export default {
       filterCategory.length == 0
         ? this.categories.push(newCategory)
         : filterCategory[0].flashCardVal.push(newFlashContent);
-      console.log(filterCategory, newCategory, newFlashContent);
     },
   },
 };
