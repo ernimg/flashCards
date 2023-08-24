@@ -30,7 +30,6 @@ export default {
       const category = this.$refs.Category.value;
       if (plWord === "" || enWord === "" || category === "")
         return alert("uspełnij wszystkie pola");
-      // console.log(plWord, enWord, category);
       this.addC(plWord, enWord, category);
     },
   },

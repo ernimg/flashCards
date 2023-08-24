@@ -52,16 +52,29 @@ export default {
         const filterCategory = this.categories.filter(
           (category) => category.category === arg
         );
-
-        filterCategory[0].flashCardVal.forEach((items) => {
-          this.activeFlasCard.push(items);
-        });
+        for (const element of filterCategory[0].flashCardVal) {
+          console.log("w for", this.activeFlasCard);
+          this.activeFlasCard.push(element);
+        }
       } else {
-        this.activeFlasCard = [];
+        this.activeFlasCard.length = 0;
       }
     },
-    addFlasCard(word, translate, category) {
-      console.log(word, translate, category);
+    addFlasCard(word, translate, cat) {
+      console.log(word, translate, cat);
+      const filterCategory = this.categories.filter(
+        (category) => category.category === cat
+      );
+      const newCategory = {
+        category: cat,
+        flashCardVal: [{ En: translate, Pl: word }],
+      };
+      const newFlashContent = { En: translate, Pl: word };
+
+      filterCategory.length == 0
+        ? this.categories.push(newCategory)
+        : filterCategory[0].flashCardVal.push(newFlashContent);
+      console.log(filterCategory, newCategory, newFlashContent);
     },
   },
 };
