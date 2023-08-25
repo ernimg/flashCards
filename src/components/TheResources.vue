@@ -1,4 +1,5 @@
 <template>
+  <the-header :content="headerVal"></the-header>
   <base-box>
     <base-button @click="setActiveTab('flas-card-categories')"
       >Categories</base-button
@@ -16,31 +17,34 @@ import BaseBox from "../UI/BaseBox.vue";
 import AddFlashCard from "./AddFlashCard.vue";
 import FlasCardCategories from "./FlasCardCategories.vue";
 import FlashCardsColletion from "./FlashCardsColletion.vue";
+import TheHeader from "./template/TheHeader.vue";
 export default {
   components: {
     FlasCardCategories,
     AddFlashCard,
     FlashCardsColletion,
     BaseBox,
+    TheHeader,
   },
 
   data() {
     return {
       activeTab: "flas-card-categories",
       activeFlasCard: [],
+      headerVal: "",
       categories: [
         {
-          category: "Jedzenie",
+          category: "foods",
           flashCardVal: [
-            { En: "potatoes", Pl: "ziemniaki" },
-            { En: "tomatoes", Pl: "pomidory" },
+            { En: "test1", Pl: "test2" },
+            { En: "test3", Pl: "test4" },
           ],
         },
         {
-          category: "Ubrania",
+          category: "hobby",
           flashCardVal: [
-            { En: "suit", Pl: "garnitur" },
-            { En: "dress", Pl: "sukienka" },
+            { En: "test0", Pl: "test1" },
+            { En: "test3", Pl: "test4" },
           ],
         },
       ],
@@ -60,6 +64,7 @@ export default {
     setActiveTab(tab, arg = "") {
       this.activeTab = tab;
       if (arg !== "") {
+        this.headerVal = arg;
         const filterCategory = this.categories.filter(
           (category) => category.category === arg
         );
@@ -68,6 +73,7 @@ export default {
         }
       } else {
         this.activeFlasCard.length = 0;
+        this.headerVal = "";
       }
     },
     addFlasCard(word, translate, cat) {
@@ -83,6 +89,7 @@ export default {
       filterCategory.length == 0
         ? this.categories.push(newCategory)
         : filterCategory[0].flashCardVal.push(newFlashContent);
+      this.activeTab = "flas-card-categories";
     },
   },
 };
