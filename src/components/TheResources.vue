@@ -1,17 +1,28 @@
 <template>
-  <button @click="setActiveTab('flas-card-categories')">Categories</button>
-  <button @click="setActiveTab('add-flash-card')">Add FlasCard</button>
-  <!-- <keep-alive> -->
-  <component :is="activeTab"></component>
-  <!-- </keep-alive> -->
+  <base-box>
+    <base-button @click="setActiveTab('flas-card-categories')"
+      >Categories</base-button
+    >
+    <base-button @click="setActiveTab('add-flash-card')"
+      >Add FlasCard</base-button
+    >
+  </base-box>
+
+  <keep-alive> <component :is="activeTab"></component> </keep-alive>
 </template>
 <div>{{setActiveFlashCards}}</div>
 <script>
+import BaseBox from "../UI/BaseBox.vue";
 import AddFlashCard from "./AddFlashCard.vue";
 import FlasCardCategories from "./FlasCardCategories.vue";
 import FlashCardsColletion from "./FlashCardsColletion.vue";
 export default {
-  components: { FlasCardCategories, AddFlashCard, FlashCardsColletion },
+  components: {
+    FlasCardCategories,
+    AddFlashCard,
+    FlashCardsColletion,
+    BaseBox,
+  },
 
   data() {
     return {
@@ -53,7 +64,6 @@ export default {
           (category) => category.category === arg
         );
         for (const element of filterCategory[0].flashCardVal) {
-          console.log("w for", this.activeFlasCard);
           this.activeFlasCard.push(element);
         }
       } else {
@@ -61,7 +71,6 @@ export default {
       }
     },
     addFlasCard(word, translate, cat) {
-      console.log(word, translate, cat);
       const filterCategory = this.categories.filter(
         (category) => category.category === cat
       );
@@ -78,3 +87,34 @@ export default {
   },
 };
 </script>
+<style>
+@media only screen and (max-width: 1000px) {
+  .card {
+    grid-column-end: span 6;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  main {
+    grid-gap: 20px;
+  }
+  .card {
+    grid-column-end: span 12;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  main {
+    grid-template-columns: 10px repeat(6, 1fr) 10px;
+    grid-gap: 10px;
+  }
+  .cards {
+    grid-column: 2 / span 6;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 20px;
+  }
+  .card {
+    grid-column-end: span 6;
+  }
+}
+</style>

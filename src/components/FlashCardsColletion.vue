@@ -1,15 +1,16 @@
 <template>
-  <h2>FlashCardsCollection</h2>
-  <div class="card" v-for="category in selectedCategory" :key="category.Pl">
-    <div class="card-inner">
-      <div class="card-front">
-        <p>{{ category.Pl }}</p>
-      </div>
-      <div class="card-back">
-        <p>{{ category.En }}</p>
+  <main>
+    <div class="card" v-for="category in selectedCategory" :key="category.Pl">
+      <div class="card-inner">
+        <div class="card-front">
+          <p>{{ category.Pl }}</p>
+        </div>
+        <div class="card-back">
+          <p>{{ category.En }}</p>
+        </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 <script>
 export default {
@@ -20,6 +21,11 @@ export default {
 };
 </script>
 <style scoped>
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 .card {
   width: 300px;
   height: 200px;
@@ -48,11 +54,11 @@ export default {
 }
 
 .card-front {
-  background-color: #6a2c70;
+  background-color: #3a0061;
   color: #fff;
   display: flex;
   align-items: center;
-  border: 10px solid #6a2c70;
+  border: 10px solid #3a0061;
   border-radius: 10px;
   justify-content: center;
   font-size: 24px;
@@ -60,11 +66,11 @@ export default {
 }
 
 .card-back {
-  background-color: #f08a5d;
+  background-color: #27866f;
   color: #fff;
   display: flex;
   align-items: center;
-  border: 10px solid #f08a5d;
+  border: 10px solid #27866f;
   border-radius: 10px;
   justify-content: center;
   font-size: 24px;
