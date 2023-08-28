@@ -16,6 +16,13 @@
       <base-button>Add</base-button>
     </form>
   </base-box>
+  <teleport to="body">
+    <base-dialog
+      v-if="err"
+      :title="errMsg"
+      @close="handleCloseErr"
+    ></base-dialog>
+  </teleport>
 </template>
 <script>
 import BaseButton from "../UI/BaseButton.vue";
@@ -23,7 +30,10 @@ export default {
   components: { BaseButton },
   inject: ["addC"],
   data() {
-    return {};
+    return {
+      err: false,
+      errMsg: "",
+    };
   },
   methods: {
     handleForm(evt) {
@@ -31,9 +41,15 @@ export default {
       const plWord = this.$refs.Polish.value;
       const enWord = this.$refs.English.value;
       const category = this.$refs.Category.value;
-      if (plWord === "" || enWord === "" || category === "")
-        return alert("uspełnij wszystkie pola");
-      this.addC(plWord, enWord, category);
+      if (plWord === "" || enWord === "" || category === "") {
+        this.errMsg = "uspełnij wszystkie pola";
+        this.err = true;
+      } else {
+        this.addC(plWord, enWord, category);
+      }
+    },
+    handleCloseErr() {
+      this.err = false;
     },
   },
 };
